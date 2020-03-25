@@ -1,0 +1,21 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'edu.java.spring'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '13'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+    implementation "org.springframework.boot:spring-boot-starter-web"
+}
