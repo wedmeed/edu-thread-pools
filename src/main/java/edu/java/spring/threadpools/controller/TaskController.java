@@ -1,6 +1,11 @@
 package edu.java.spring.threadpools.controller;
 
+import edu.java.spring.threadpools.model.FeasibilityResult;
 import edu.java.spring.threadpools.model.Task;
+import edu.java.spring.threadpools.service.FeasibilityService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,10 +13,25 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@Slf4j
 public class TaskController {
 
-    @PostMapping("/salary")
-    void publishSalary(@RequestBody List<Task> taskSet) {
+    private final FeasibilityService service;
+
+    public TaskController(FeasibilityService service) {
+        this.service = service;
+    }
+
+    @PostMapping("/suit/{suit_name}")
+    public void publishSalary(@PathVariable("suit_name") String suitName, @RequestBody List<Task> taskSuit) {
+        service.publishTaskSuit(suitName, taskSuit);
+    }
+
+    @GetMapping("/feasibility/{suit_name}")
+    public FeasibilityResult publishSalary(@PathVariable("suit_name") String suitName) {
+        FeasibilityResult res = service.getSuitFeasibility(suitName);
+        log.info("Return feasibility {}", res);
+        return res;
     }
 
 
