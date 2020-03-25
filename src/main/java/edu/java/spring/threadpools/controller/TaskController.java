@@ -25,12 +25,13 @@ public class TaskController {
     }
 
     @PostMapping("/suit/{suit_name}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.CREATED)
     public void publishSalary(@PathVariable("suit_name") String suitName, @RequestBody List<Task> taskSuit) {
         service.publishTaskSuit(suitName, taskSuit);
     }
 
     @GetMapping("/feasibility/{suit_name}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public FeasibilityResult publishSalary(@PathVariable("suit_name") String suitName) {
         FeasibilityResult res = service.getSuitFeasibility(suitName);
         if (res == null){
