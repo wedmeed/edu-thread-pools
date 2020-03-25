@@ -1,10 +1,10 @@
 
 import groovy.json.JsonOutput
 
-def rand = new Random();
+def rand = new Random()
 
-def suitName = word(3+rand.nextInt(4)) + "_" + word(3+rand.nextInt(4));
-vars.put("suitName",suitName);
+def suitName = word(3+rand.nextInt(4)) + "_" + word(3+rand.nextInt(4))
+vars.put("suitName",suitName)
 
 def taskAmount = rand.nextInt(20)
 def taskSet = new LinkedList()
@@ -22,24 +22,24 @@ for (int i=0; i<taskAmount; i++){
 }
 
 def body = JsonOutput.prettyPrint(JsonOutput.toJson(taskSet))
-vars.put("body",body);
+vars.put("body",body)
 
 
 static def word(length) {
-    def rand = new Random();
-    def consonants = "bcdfghjlmnpqrstv";
-    def vowels = "aeiou";
-    def builder = new StringBuilder();
+    def rand = new Random()
+    def consonants = "bcdfghjlmnpqrstv"
+    def vowels = "aeiou"
+    def builder = new StringBuilder()
     for (int i=0; i<length/2; i++) {
-        def randConsonant = String.valueOf(consonants.charAt(rand.nextInt(consonants.length())));
-        def randVowel = String.valueOf(vowels.charAt(rand.nextInt(vowels.length())));
+        def randConsonant = String.valueOf(consonants.charAt(rand.nextInt(consonants.length())))
+        def randVowel = String.valueOf(vowels.charAt(rand.nextInt(vowels.length())))
         if (i == 0){
-            randConsonant = randConsonant.toUpperCase();
+            randConsonant = randConsonant.toUpperCase()
         }
-        builder.append(randConsonant);
+        builder.append(randConsonant)
         if (i*2 < length-1){
-            builder.append(randVowel);
+            builder.append(randVowel)
         }
     }
-    return builder.toString();
+    return builder.toString()
 }
