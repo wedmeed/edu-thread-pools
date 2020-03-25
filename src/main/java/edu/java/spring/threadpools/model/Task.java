@@ -4,5 +4,11 @@ import lombok.Data;
 
 @Data
 public class Task {
-    String name;
+    private String name;
+    private Integer computation;
+    private Integer deadline;
+    private Integer period;
+    private Integer priority;
+    private Integer latency;
+    private Integer amount;
 }
