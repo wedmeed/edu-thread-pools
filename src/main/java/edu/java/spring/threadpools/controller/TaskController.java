@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @Slf4j
@@ -26,7 +27,7 @@ public class TaskController {
 
     @PostMapping("/suit/{suit_name}")
     @ResponseStatus(HttpStatus.CREATED)
-    public void publishSalary(@PathVariable("suit_name") String suitName, @RequestBody List<Task> taskSuit) {
+    public void publishSalary(@PathVariable("suit_name") String suitName, @RequestBody List<Task> taskSuit) throws ExecutionException, InterruptedException {
         service.publishTaskSuit(suitName, taskSuit);
     }
 
