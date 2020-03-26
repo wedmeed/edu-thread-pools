@@ -28,8 +28,8 @@ def taskSet = new LinkedList()
 for (int i=0; i<taskAmount; i++){
     def task = new HashMap()
     def computation = 5
-    def deadline = 200
-    def period = 16000
+    def deadline = computation*taskAmount
+    def period = computation*taskAmount
     task.put("name", "task"+i)
     task.put("computation", computation)
     task.put("deadline", deadline)

@@ -16,12 +16,10 @@ import java.util.stream.Collectors;
 @Slf4j
 public class FeasibilityService {
 
-    private final ConcurrentHashMap<String, List<Task>> suits = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, FeasibilityResult> evaluations = new ConcurrentHashMap<>();
 
 
     public void publishTaskSuit(String name, List<Task> suit) {
-        suits.putIfAbsent(name, suit);
         FeasibilityResult feasibility = feasibilityTest(suit);
         evaluations.putIfAbsent(name, feasibility);
     }
