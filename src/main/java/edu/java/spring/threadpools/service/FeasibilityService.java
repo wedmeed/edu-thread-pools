@@ -50,12 +50,12 @@ public class FeasibilityService {
                     for (; amount > 0; amount--) {
                         newLatency += Math.ceil((double) latency / (double) hptask.getPeriod())
                                 * hptask.getComputation();
-                        if (latency > Integer.MAX_VALUE/2){
+                        if (latency > Integer.MAX_VALUE / 2) {
                             break;
                         }
                     }
                 }
-                if (latency > Integer.MAX_VALUE/2){
+                if (latency > Integer.MAX_VALUE / 2) {
                     break;
                 }
                 if (newLatency == latency) {
@@ -70,7 +70,7 @@ public class FeasibilityService {
         }
         for (Task task : suitForCalculation) {
             if (task.getLatency() != null
-                    && task.getDeadline() > task.getLatency()){
+                    && task.getDeadline() > task.getLatency()) {
                 result.setMaxFeasibleLatency(task.getLatency());
                 result.setLastFeasibleTaskName(task.getName());
             } else {
